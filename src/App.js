@@ -4,7 +4,6 @@ import React, { useRef } from 'react';
 import LocationFinder from './LocationFinder';
 
 function App() {
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></link>
   const postalCodeRef = useRef()
   function handlePostalCode(e) {
     const postalCode =  postalCodeRef.current.value
