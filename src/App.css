@@ -1,5 +1,4 @@
 .App {
-  /* text-align: center; */
   background-color: #282c34;
 }
 
@@ -14,18 +13,23 @@
   }
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.column{
+.grid-container {
+  position: absolute;
+  display: grid;
+  gap: 75px;
+  grid-template-columns: auto auto auto;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
   text-align: center;
-  float: left;
-  width: 33.33%;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+img {
+  height: 200px;
+  width: auto;
 }
 
 .App-header {
@@ -37,14 +41,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  /* background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white; */
 }
 
 .App-link {
