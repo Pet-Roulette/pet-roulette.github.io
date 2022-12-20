@@ -23,7 +23,7 @@ function App() {
 			.then(res => res.json())
 			.then(data => {
 				// fetches information from a secondary API response to use pet name and image features
-				let secondRequest = "https://api.petfinder.com/v2/animals?location=" + postalCode + "&limit=9";
+				let secondRequest = "https://api.petfinder.com/v2/animals?location=" + postalCode + "&limit=100";
 				return fetch(secondRequest, {
 					headers: {
 						Authorization: "Bearer " + data.access_token
@@ -35,13 +35,25 @@ function App() {
 		const printResult = () => {
 			result.then((animalArray) => {
 				const nearbyPets = animalArray.animals
+				console.log(nearbyPets)
 				// for loop that iterates up to 9 animals in the user's vicinity
-				for (let i = 0; i < nearbyPets.length; i++) {
-					document.getElementById(String(i+1)).innerHTML = nearbyPets[i].name + "<br>";
-					// create an img element to display an image of the available pet
-					var img = document.createElement('img');
-					img.src = nearbyPets[i].photos[0].full;
-					document.getElementById(String(i+1)).appendChild(img);
+				var counter = 1;
+				for (let i = 0; i <= nearbyPets.length; i++) {
+					if (counter > 9) {
+						break;
+					}
+					// error handling for missing photo url from Petfinder API
+					try {
+						document.getElementById(String(counter)).innerHTML = nearbyPets[i].name + "<br>";
+						// create an img element to display an image of the available pet
+						var img = document.createElement('img');
+						img.src = nearbyPets[i].photos[0].full;
+						document.getElementById(String(counter)).appendChild(img);
+						counter++;
+					}
+					catch (ex) {
+						console.log(ex.name + " occured due to missing photo file.")
+					}
 				}
 			});
 		};
