@@ -16,7 +16,7 @@ Adopt a pet among 36 available in the local vicinity.
 
 Good luck hitting the jackpot!"
 
-1. Enter a valid zip code into the input field.
+1. Enter a valid 5-digit zip code into the input field.
 
 2. Press the "Enter" key or click on the search button (magnifying glass icon).
 
@@ -39,6 +39,12 @@ The name of Pet Roulette's mascot is Petr (!wow), which roots from Pet and the R
 Holds an input field and search button.
 
 Requests input of a zip code from user to send as a part of the API request.
+
+### Error Handling
+
+Website application handles one primary case where a non-existent zip code is sent in the API request.
+
+Pet Roulette secures a secondary case where the API response provides an empty array of photos.
 
 ## Part 2
 
