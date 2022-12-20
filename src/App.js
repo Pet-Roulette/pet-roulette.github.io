@@ -1,7 +1,8 @@
 import logo from './logo.png';
+import search from './search.png';
 import './App.css';
 import React, { useRef } from 'react';
-import LocationFinder from './LocationFinder';
+import Instructions from './Instructions';
 
 function App() {
 	const inputRef = useRef()
@@ -54,7 +55,7 @@ function App() {
 					}
 					// error handling for missing photo url from Petfinder API
 					try {
-						document.getElementById(String(counter)).innerHTML = nearbyPets[i].name + "<br>";
+						document.getElementById(String(counter)).innerHTML = nearbyPets[i].name.slice(0, 25) + "<br/>";
 						// create an img element to display an image of the available pet
 						var img = document.createElement('img');
 						img.src = nearbyPets[i].photos[0].full;
@@ -111,12 +112,23 @@ function App() {
 				<div id="27" className="grid-item"></div>
 				<div id="28" className="grid-item"></div>
 				<div id="29" className="grid-item"></div>
+				<div id="30" className="grid-item"></div>
+				<div id="31" className="grid-item"></div>
+				<div id="32" className="grid-item"></div>
+				<div id="33" className="grid-item"></div>
+				<div id="34" className="grid-item"></div>
+				<div id="35" className="grid-item"></div>
+				<div id="36" className="grid-item"></div>
 			</div>
 			<header id="header" className="App-header">
 				<img src={logo} className="App-logo" alt="logo" /><br/>
-				<LocationFinder />
-				<input id="textInput" ref={inputRef} type="text" placeholder="Enter zip code:" className="input"/>
-				<input id="searchBtn" onClick={handleZip} type="button" value="Search" className="btn"/><br/>
+				<Instructions />
+				<div class="input-group">
+					<input id="textInput" ref={inputRef} type="text" placeholder="Enter a zip code:" className="input"/>
+					<input type="image" src={search} onClick={handleZip} className="btn" id="searchBtn" alt="search"/>
+				</div>
+				{/* <input id="searchBtn" onClick={handleZip} type="button" value="Search" className="btn"/><br/>
+				<button id="searchBtn" onClick={handleZip}><img src={search} alt="search" border="0"/></button> */}
 				<a className="App-link" href="https://www.petfinder.com" target="_blank" rel="noopener noreferrer">Petfinder</a>
 			</header>
 		</div>
