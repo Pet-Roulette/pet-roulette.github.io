@@ -5,7 +5,8 @@ import LocationFinder from './LocationFinder';
 
 function App() {
 	const inputRef = useRef()
-	function detectEnter() {
+	window.onload = function(){
+		document.getElementById("textInput").focus();
 		var input = document.getElementById("textInput");
 		input.addEventListener("keypress", function(event) {
 			if (event.key === "Enter") {
@@ -13,7 +14,7 @@ function App() {
 				document.getElementById("searchBtn").click();
 			}
 		})
-	}
+	};
 	// handles the code when the user searches a zip code
 	function handleZip() {
 		const zipCode =  inputRef.current.value
@@ -48,7 +49,7 @@ function App() {
 				// for loop that iterates up to 9 animals in the user's vicinity
 				var counter = 1;
 				for (let i = 0; i <= nearbyPets.length; i++) {
-					if (counter > 9) {
+					if (counter > 36) {
 						break;
 					}
 					// error handling for missing photo url from Petfinder API
@@ -58,6 +59,11 @@ function App() {
 						var img = document.createElement('img');
 						img.src = nearbyPets[i].photos[0].full;
 						document.getElementById(String(counter)).appendChild(img);
+						document.getElementById(String(counter)).addEventListener("click", petURL);
+						function petURL() {
+							alert("Redirection to Petfinder URL.")
+							window.location.href = nearbyPets[i].url;
+						}
 						counter++;
 					}
 					catch (ex) {
@@ -70,6 +76,7 @@ function App() {
 		// comment below is a way to clear our page to display information about pets
 		document.getElementById("header").innerHTML = "";
 	};
+
 	return (
 	<>
 		<div className="App">
@@ -84,11 +91,31 @@ function App() {
 				<div id="7" className="grid-item"></div>
 				<div id="8" className="grid-item"></div>
 				<div id="9" className="grid-item"></div>
+				<div id="10" className="grid-item"></div>
+				<div id="11" className="grid-item"></div>
+				<div id="12" className="grid-item"></div>
+				<div id="13" className="grid-item"></div>
+				<div id="14" className="grid-item"></div>
+				<div id="15" className="grid-item"></div>
+				<div id="16" className="grid-item"></div>
+				<div id="17" className="grid-item"></div>
+				<div id="18" className="grid-item"></div>
+				<div id="19" className="grid-item"></div>
+				<div id="20" className="grid-item"></div>
+				<div id="21" className="grid-item"></div>
+				<div id="22" className="grid-item"></div>
+				<div id="23" className="grid-item"></div>
+				<div id="24" className="grid-item"></div>
+				<div id="25" className="grid-item"></div>
+				<div id="26" className="grid-item"></div>
+				<div id="27" className="grid-item"></div>
+				<div id="28" className="grid-item"></div>
+				<div id="29" className="grid-item"></div>
 			</div>
 			<header id="header" className="App-header">
 				<img src={logo} className="App-logo" alt="logo" /><br/>
 				<LocationFinder />
-				<input id="textInput" onKeyDown={detectEnter} ref={inputRef} type="text" placeholder="Enter zip code:" className="input"/>
+				<input id="textInput" ref={inputRef} type="text" placeholder="Enter zip code:" className="input"/>
 				<input id="searchBtn" onClick={handleZip} type="button" value="Search" className="btn"/><br/>
 				<a className="App-link" href="https://www.petfinder.com" target="_blank" rel="noopener noreferrer">Petfinder</a>
 			</header>
