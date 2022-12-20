@@ -7,17 +7,25 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@media ((min-width: 600px) and (prefers-reduced-motion: no-preference)) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+  .grid-container { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* .btn {
+
+}
+
+.input {
+
+} */
 
 .grid-container {
   position: absolute;
   display: grid;
   gap: 75px;
-  grid-template-columns: auto auto auto;
   margin-left: auto;
   margin-right: auto;
   left: 0;
