@@ -3,17 +3,16 @@
 }
 
 body {
-  overflow-x: hidden;
   background-color: #282c34;
 }
 
-img {
+img:not(.appLogo) {
   width: auto;
   height: auto;
-  max-width: 450px;
-  max-height: 300px;
-  border-radius: 5%;
   object-fit: contain;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 50%;
 }
 
 .appLogo {
@@ -73,19 +72,17 @@ input:focus {
 }
 
 .gridContainer {
-  margin-top: 2%;
+  margin: 5%;
   position: absolute;
   display: grid;
   gap: 75px;
-  margin-left: 2%;
-  margin-right: 2%;
   left: 0;
   right: 0;
 }
 
 .gridItem {
   cursor: pointer;
-  border-radius: 50px;
+  border-radius: 25px;
   background: #E7E0D3;
   text-align: center;
   font-family: "Verdana";

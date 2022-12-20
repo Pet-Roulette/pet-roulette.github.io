@@ -66,7 +66,7 @@ function App() {
 							document.getElementById(String(counter)).appendChild(img);
 							document.getElementById(String(counter)).addEventListener("click", petURL);
 							function petURL() {
-								alert("Redirecting to adoption site URL.")
+								alert('"Redirect to adoption site URL?"')
 								window.location.href = nearbyPets[i].url;
 							}
 							counter++;
@@ -88,6 +88,7 @@ function App() {
 
 	return (
 	<>
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 		<div className="app">
 			{/* grid element that holds the name and adjusted image of an available pet */}
 			<div className="gridContainer">
@@ -131,7 +132,7 @@ function App() {
 			<header id="header" className="appHeader">
 				<img src={logo} className="appLogo" alt="Petr Logo" /><br/>
 				<Instructions />
-				<div class="inputGroup">
+				<div className="inputGroup">
 					<input id="textInput" ref={inputRef} type="text" placeholder="Enter zip code"/>
 					<input id="searchBtn" type="image" src={search} onClick={handleZip} className="btn" alt="search"/>
 				</div>
