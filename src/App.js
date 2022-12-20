@@ -1,4 +1,4 @@
-import logo from './logo.png';
+import logo from './petrLogo.png';
 import search from './search.png';
 import './App.css';
 import React, { useRef } from 'react';
@@ -121,7 +121,7 @@ function App() {
 				<div id="36" className="gridItem"></div>
 			</div>
 			<header id="header" className="appHeader">
-				<img src={logo} className="appLogo" alt="logo" /><br/>
+				<img src={logo} className="appLogo" alt="Petr Logo" /><br/>
 				<Instructions />
 				<div class="inputGroup">
 					<input id="textInput" ref={inputRef} type="text" placeholder="Enter zip code"/>

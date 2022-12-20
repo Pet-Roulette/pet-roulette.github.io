@@ -47,7 +47,7 @@ img {
   position: absolute;
   width: calc(10px + 2vmin);
   height: auto;
-  border-radius: 10px;
+  border-radius: 0px;
   background: white;
   padding: 2px;
 }
