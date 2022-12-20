@@ -2,7 +2,10 @@
   background-color: #282c34;
 }
 
-body {background-color: #282c34;}
+body {
+  overflow-x: hidden;
+  background-color: #282c34;
+}
 
 img {
   width: auto;
@@ -40,7 +43,7 @@ img {
 }
 
 .btn {
-  margin-left: 15px;
+  margin-left: 12px;
   position: absolute;
   width: calc(10px + 2vmin);
   height: auto;
