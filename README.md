@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Welcome to Pet Roulette!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project uses [React](https://github.com/facebook/create-react-app), [JavaScript](https://www.javascript.com/), [HTML](https://www.w3schools.com/html/), [CSS](https://www.w3schools.com/css/), [GitHub Pages](https://pages.github.com/), and [Petfinder API](https://www.petfinder.com/developers/).
+Site images are original, digital creations.
 
-## Available Scripts
+## Page 1
 
-In the project directory, you can run:
+In the homepage, there are multiple key elements:
 
-### `npm start`
+### Instructions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+"Welcome to Pet Roulette!
+Adopt a pet among 36 available in the local vicinity.
+Good luck hitting the jackpot!"
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Enter a valid zip code into the input field.
+2. Press the "Enter" key or click on the search button (magnifying glass icon).
+3. View and scroll among 36 pets available at adoption organizations in the local vicinity.
+4. Click on a pet to redirect to the adoption post of the hosting organization.
+5. (Optional) Initiate the adoption process and make a furry friend!
 
-### `npm test`
+**Note: A user is not required to find and adopt a pet!**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Logo Icon
 
-### `npm run build`
+Original favicon used as the tab icon, and as an entertaining spinning object.
+The name of Pet Roulette's mascot is Petr.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### FlexBox
+Holds an input field and search button.
+Requests input of a zip code from user to send as a part of the API request.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Page 2
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The secondary page consists of API communication and a grid element:
 
-### `npm run eject`
+### API Communication
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Dispatch an initial request to Petfinder API (RESTful API) to retrieve an access token for subsequent API calls in cURL format.
+Send a secondary request to Petfinder API regarding information (names and images) of animals near the user inputted zip code.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Grid
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Implemented a grid system to layout items that displays names and images of 36 pets.
+Grid layout and information is depicted/adjusted differently depending on the user's device.
+**For PC: Organize 3 columns of pet information that the user can scroll down.**
+**For mobile: Organize 1 column of pet information that the user can scroll down.**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Appreciation
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for checking out Pet Roulette, a front-end project developed by Kyle Jung and Emily Pham!

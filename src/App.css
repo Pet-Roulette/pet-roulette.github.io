@@ -1,4 +1,4 @@
-.App {
+.app {
   background-color: #282c34;
 }
 
@@ -13,27 +13,27 @@ img {
   object-fit: contain;
 }
 
-.App-logo {
+.appLogo {
   height: 40vmin;
   pointer-events: none;
   margin-bottom: 25px;
 }
 
 @media (prefers-reduced-motion: no-preference) and (min-width: 600px) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .appLogo {
+    animation: logoSpin infinite 20s linear;
   }
-  .grid-container { grid-template-columns: repeat(3, 1fr); }
+  .gridContainer { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (prefers-reduced-motion: no-preference) and (max-width: 600px) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .appLogo {
+    animation: logoSpin infinite 20s linear;
   }
-  .grid-container { grid-template-columns: repeat(1, 1fr); }
+  .gridContainer { grid-template-columns: repeat(1, 1fr); }
 }
 
-.input-group { 
+.inputGroup { 
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -53,7 +53,7 @@ img {
   opacity: 0.5;
 }
 
-.input {
+input {
   position: relative;
   margin-top: 10px;
   border-radius: 25px;
@@ -69,7 +69,7 @@ input:focus {
   outline: none;
 }
 
-.grid-container {
+.gridContainer {
   margin-top: 2%;
   position: absolute;
   display: grid;
@@ -80,7 +80,7 @@ input:focus {
   right: 0;
 }
 
-.grid-item {
+.gridItem {
   cursor: pointer;
   border-radius: 50px;
   background: #E7E0D3;
@@ -90,11 +90,11 @@ input:focus {
   color: #533e64;
 }
 
-.grid-item:hover {
+.gridItem:hover {
   opacity: 0.5;
 }
 
-.App-header {
+.appHeader {
   text-align: center;
   min-height: 100vh;
   display: flex;
@@ -106,17 +106,17 @@ input:focus {
   color: white;
 }
 
-.App-link {
+.appLink {
   position: relative;
   margin-top: 1%;
   color: #a4ddec;
 }
 
-.App-link:hover {
+.appLink:hover {
   opacity: 0.5;
 }
 
-@keyframes App-logo-spin {
+@keyframes logoSpin {
   from {
     transform: rotate(0deg);
   }

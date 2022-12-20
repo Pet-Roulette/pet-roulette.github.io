@@ -62,7 +62,7 @@ function App() {
 						document.getElementById(String(counter)).appendChild(img);
 						document.getElementById(String(counter)).addEventListener("click", petURL);
 						function petURL() {
-							alert("Redirection to Petfinder URL.")
+							alert("Redirecting to adoption site URL.")
 							window.location.href = nearbyPets[i].url;
 						}
 						counter++;
@@ -80,56 +80,54 @@ function App() {
 
 	return (
 	<>
-		<div className="App">
+		<div className="app">
 			{/* grid element that holds the name and adjusted image of an available pet */}
-			<div className="grid-container">
-				<div id="1" className="grid-item"></div>
-				<div id="2" className="grid-item"></div>
-				<div id="3" className="grid-item"></div>
-				<div id="4" className="grid-item"></div>
-				<div id="5" className="grid-item"></div>
-				<div id="6" className="grid-item"></div>
-				<div id="7" className="grid-item"></div>
-				<div id="8" className="grid-item"></div>
-				<div id="9" className="grid-item"></div>
-				<div id="10" className="grid-item"></div>
-				<div id="11" className="grid-item"></div>
-				<div id="12" className="grid-item"></div>
-				<div id="13" className="grid-item"></div>
-				<div id="14" className="grid-item"></div>
-				<div id="15" className="grid-item"></div>
-				<div id="16" className="grid-item"></div>
-				<div id="17" className="grid-item"></div>
-				<div id="18" className="grid-item"></div>
-				<div id="19" className="grid-item"></div>
-				<div id="20" className="grid-item"></div>
-				<div id="21" className="grid-item"></div>
-				<div id="22" className="grid-item"></div>
-				<div id="23" className="grid-item"></div>
-				<div id="24" className="grid-item"></div>
-				<div id="25" className="grid-item"></div>
-				<div id="26" className="grid-item"></div>
-				<div id="27" className="grid-item"></div>
-				<div id="28" className="grid-item"></div>
-				<div id="29" className="grid-item"></div>
-				<div id="30" className="grid-item"></div>
-				<div id="31" className="grid-item"></div>
-				<div id="32" className="grid-item"></div>
-				<div id="33" className="grid-item"></div>
-				<div id="34" className="grid-item"></div>
-				<div id="35" className="grid-item"></div>
-				<div id="36" className="grid-item"></div>
+			<div className="gridContainer">
+				<div id="1" className="gridItem"></div>
+				<div id="2" className="gridItem"></div>
+				<div id="3" className="gridItem"></div>
+				<div id="4" className="gridItem"></div>
+				<div id="5" className="gridItem"></div>
+				<div id="6" className="gridItem"></div>
+				<div id="7" className="gridItem"></div>
+				<div id="8" className="gridItem"></div>
+				<div id="9" className="gridItem"></div>
+				<div id="10" className="gridItem"></div>
+				<div id="11" className="gridItem"></div>
+				<div id="12" className="gridItem"></div>
+				<div id="13" className="gridItem"></div>
+				<div id="14" className="gridItem"></div>
+				<div id="15" className="gridItem"></div>
+				<div id="16" className="gridItem"></div>
+				<div id="17" className="gridItem"></div>
+				<div id="18" className="gridItem"></div>
+				<div id="19" className="gridItem"></div>
+				<div id="20" className="gridItem"></div>
+				<div id="21" className="gridItem"></div>
+				<div id="22" className="gridItem"></div>
+				<div id="23" className="gridItem"></div>
+				<div id="24" className="gridItem"></div>
+				<div id="25" className="gridItem"></div>
+				<div id="26" className="gridItem"></div>
+				<div id="27" className="gridItem"></div>
+				<div id="28" className="gridItem"></div>
+				<div id="29" className="gridItem"></div>
+				<div id="30" className="gridItem"></div>
+				<div id="31" className="gridItem"></div>
+				<div id="32" className="gridItem"></div>
+				<div id="33" className="gridItem"></div>
+				<div id="34" className="gridItem"></div>
+				<div id="35" className="gridItem"></div>
+				<div id="36" className="gridItem"></div>
 			</div>
-			<header id="header" className="App-header">
-				<img src={logo} className="App-logo" alt="logo" /><br/>
+			<header id="header" className="appHeader">
+				<img src={logo} className="appLogo" alt="logo" /><br/>
 				<Instructions />
-				<div class="input-group">
-					<input id="textInput" ref={inputRef} type="text" placeholder="Enter a zip code:" className="input"/>
-					<input type="image" src={search} onClick={handleZip} className="btn" id="searchBtn" alt="search"/>
+				<div class="inputGroup">
+					<input id="textInput" ref={inputRef} type="text" placeholder="Enter zip code"/>
+					<input id="searchBtn" type="image" src={search} onClick={handleZip} className="btn" alt="search"/>
 				</div>
-				{/* <input id="searchBtn" onClick={handleZip} type="button" value="Search" className="btn"/><br/>
-				<button id="searchBtn" onClick={handleZip}><img src={search} alt="search" border="0"/></button> */}
-				<a className="App-link" href="https://www.petfinder.com" target="_blank" rel="noopener noreferrer">Petfinder</a>
+				<a className="appLink" href="https://www.petfinder.com" target="_blank" rel="noopener noreferrer">Petfinder</a>
 			</header>
 		</div>
 	</>

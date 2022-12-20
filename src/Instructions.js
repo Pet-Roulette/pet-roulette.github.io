@@ -4,8 +4,8 @@ export default function Instructions() {
   return (
     <div>
         Welcome to Pet Roulette!<br/>
-        Find and adopt your pet among 36 available in the location's vicinity.<br/>
-        Good luck on on the jackpot!
+        Adopt a pet among 36 available in the local vicinity.<br/>
+        Good luck hitting the jackpot!
     </div>
   )
 }
