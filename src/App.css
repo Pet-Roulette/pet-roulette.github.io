@@ -40,7 +40,7 @@ img {
 }
 
 .btn {
-  margin-left: 10px;
+  margin-left: 15px;
   position: absolute;
   width: calc(10px + 2vmin);
   height: auto;
@@ -49,9 +49,14 @@ img {
   padding: 2px;
 }
 
+.btn:hover {
+  opacity: 0.5;
+}
+
 .input {
+  position: relative;
   margin-top: 10px;
-  border-radius: 10px;
+  border-radius: 15px;
   text-align: center;
   font-family: "Verdana";
   font-size: calc(10px + 2vmin);
@@ -102,8 +107,13 @@ input:focus {
 }
 
 .App-link {
+  position: relative;
   margin-top: 1%;
   color: #a4ddec;
+}
+
+.App-link:hover {
+  opacity: 0.5;
 }
 
 @keyframes App-logo-spin {

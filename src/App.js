@@ -55,7 +55,7 @@ function App() {
 					}
 					// error handling for missing photo url from Petfinder API
 					try {
-						document.getElementById(String(counter)).innerHTML = nearbyPets[i].name.slice(0, 25) + "<br/>";
+						document.getElementById(String(counter)).innerHTML = nearbyPets[i].name.slice(0, 21) + "<br/>";
 						// create an img element to display an image of the available pet
 						var img = document.createElement('img');
 						img.src = nearbyPets[i].photos[0].full;
