@@ -56,12 +56,12 @@ img {
 .input {
   position: relative;
   margin-top: 10px;
-  border-radius: 15px;
+  border-radius: 25px;
   text-align: center;
   font-family: "Verdana";
   font-size: calc(10px + 2vmin);
   color: #533e64;
-  padding: 2px;
+  padding: 5px;
   margin-bottom: 10px;
 }
 
