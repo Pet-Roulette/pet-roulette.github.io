@@ -2,11 +2,13 @@ import logo from './roulette.png';
 import search from './search.png';
 import './App.css';
 import React, { useRef } from 'react';
-import Instructions from './Instructions';
-import locationIcon from './locationIcon.svg';
+import Roulette from './Roulette';
+
+export var inputRef = "";
 
 function App() {
-	const inputRef = useRef()
+	inputRef = useRef()
+	function searchFocus() {document.getElementById("textInput").focus();}
 	window.onload = function(){
 		document.getElementById("textInput").focus();
 		var input = document.getElementById("textInput");
@@ -17,137 +19,65 @@ function App() {
 			}
 		})
 	};
-	// handles the code when the user searches a zip code
-	function handleZip() {
-		const zipCode =  inputRef.current.value
-		inputRef.current.value = null
-		if (zipCode === '') {
-			return;
-		}
-		else if (/^\d{5}$/.test(zipCode) === false) {
-			return;
-		}
-		try {
-			// fetches a token within an API response from Petfinder API
-			const result = fetch("https://api.petfinder.com/v2/oauth2/token", {
-				body: "grant_type=client_credentials&client_id=fb6blwXi7NpHLZZHIZSMycbRHi5K2f66w0Zumbp6TscxaJJaND&client_secret=FHeoL9Z6qxpMsKjnXdHnVuoltV3SmYpBGZ95hzJB",
-				headers: {
-				"Content-Type": "application/x-www-form-urlencoded"
-				},
-				method: "POST"
-			})
-				.then(res => res.json())
-				.then(data => {
-					// fetches information from a secondary API response to use pet name and image features
-					let secondRequest = "https://api.petfinder.com/v2/animals?location=" + zipCode + "&limit=100&sort=distance";
-					return fetch(secondRequest, {
-						headers: {
-							Authorization: "Bearer " + data.access_token
-						}
-					})
-				})
-				.then(res => res.json())
-			// Above code returns a Promise object, which we can extract an array of animals
-			const printResult = () => {
-				result.then((animalArray) => {
-					const nearbyPets = animalArray.animals
-					// for loop that iterates up to 9 animals in the user's vicinity
-					var counter = 1;
-					for (let i = 0; i <= nearbyPets.length; i++) {
-						if (counter > 36) {
-							break;
-						}
-						// error handling for missing photo url from Petfinder API
-						try {
-							// json object for readability
-							var currentPet = {"name": nearbyPets[i].name.slice(0, 21), "city": nearbyPets[i].contact.address.city, "state": nearbyPets[i].contact.address.state};
-							// append name to grid
-							document.getElementById(String(counter)).innerHTML = currentPet.name;
-							document.getElementById(String(counter)).innerHTML += "<br/>";
-							// create an img element to display location icon
-							const locIconElement = document.createElement('img');
-							locIconElement.className = "locIcon";
-							locIconElement.src = locationIcon;
-							document.getElementById(String(counter)).appendChild(locIconElement);
-							// append city and state
-							const fullLoc = currentPet.city + ", " + currentPet.state;
-							document.getElementById(String(counter)).innerHTML += fullLoc;
-							document.getElementById(String(counter)).innerHTML += "<br/>";
-							// create an img element to display an image of the available pet
-							var img = document.createElement('img');
-							img.src = nearbyPets[i].photos[0].full;
-							document.getElementById(String(counter)).appendChild(img);
-							document.getElementById(String(counter)).addEventListener("click", petURL);
-							function petURL() {
-								alert('"Redirect to adoption site URL?"')
-								window.location.href = nearbyPets[i].url;
-							}
-							counter++;
-						}
-						catch (ex) {
-							console.log(ex.name + " occured due to missing photo file.")
-						}
-					}
-				});
-			};
-			printResult();
-			// comment below is a way to clear our page to display information about pets
-			document.getElementById("header").innerHTML = "";
-		}
-		catch (ex) {
-			console.log(ex.name + " occured due to invalid zip code.")
-		}
-	};
 
 	return (
 	<>
 		<meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 		<div className="app">
-			{/* grid element that holds the name and adjusted image of an available pet */}
 			<div className="gridContainer">
-				<div id="1" className="gridItem"></div>
-				<div id="2" className="gridItem"></div>
-				<div id="3" className="gridItem"></div>
-				<div id="4" className="gridItem"></div>
-				<div id="5" className="gridItem"></div>
-				<div id="6" className="gridItem"></div>
-				<div id="7" className="gridItem"></div>
-				<div id="8" className="gridItem"></div>
-				<div id="9" className="gridItem"></div>
-				<div id="10" className="gridItem"></div>
-				<div id="11" className="gridItem"></div>
-				<div id="12" className="gridItem"></div>
-				<div id="13" className="gridItem"></div>
-				<div id="14" className="gridItem"></div>
-				<div id="15" className="gridItem"></div>
-				<div id="16" className="gridItem"></div>
-				<div id="17" className="gridItem"></div>
-				<div id="18" className="gridItem"></div>
-				<div id="19" className="gridItem"></div>
-				<div id="20" className="gridItem"></div>
-				<div id="21" className="gridItem"></div>
-				<div id="22" className="gridItem"></div>
-				<div id="23" className="gridItem"></div>
-				<div id="24" className="gridItem"></div>
-				<div id="25" className="gridItem"></div>
-				<div id="26" className="gridItem"></div>
-				<div id="27" className="gridItem"></div>
-				<div id="28" className="gridItem"></div>
-				<div id="29" className="gridItem"></div>
-				<div id="30" className="gridItem"></div>
-				<div id="31" className="gridItem"></div>
-				<div id="32" className="gridItem"></div>
-				<div id="33" className="gridItem"></div>
-				<div id="34" className="gridItem"></div>
-				<div id="35" className="gridItem"></div>
-				<div id="36" className="gridItem"></div>
+				<div id="1"></div>
+				<div id="2"></div>
+				<div id="3"></div>
+				<div id="4"></div>
+				<div id="5"></div>
+				<div id="6"></div>
+				<div id="7"></div>
+				<div id="8"></div>
+				<div id="9"></div>
+				<div id="10"></div>
+				<div id="11"></div>
+				<div id="12"></div>
+				<div id="13"></div>
+				<div id="14"></div>
+				<div id="15"></div>
+				<div id="16"></div>
+				<div id="17"></div>
+				<div id="18"></div>
+				<div id="19"></div>
+				<div id="20"></div>
+				<div id="21"></div>
+				<div id="22"></div>
+				<div id="23"></div>
+				<div id="24"></div>
+				<div id="25"></div>
+				<div id="26"></div>
+				<div id="27"></div>
+				<div id="28"></div>
+				<div id="29"></div>
+				<div id="30"></div>
+				<div id="31"></div>
+				<div id="32"></div>
+				<div id="33"></div>
+				<div id="34"></div>
+				<div id="35"></div>
+				<div id="36"></div>
 			</div>
 			<header id="header" className="appHeader">
-				<img src={logo} className="appLogo" alt="Petr Logo" /><br/>
-				<Instructions />
+				<img src={logo} className="appLogo" alt="Spinning Roulette" />
+				<div>
+					Welcome to Pet Roulette!<br/>
+					Adopt among 36 pets in your local area.<br/>
+					Good luck hitting the jackpot!
+				</div>
 				<div className="inputGroup">
 					<input id="textInput" ref={inputRef} type="text" placeholder="Enter zip code"/>
-					<input id="searchBtn" type="image" src={search} onClick={handleZip} className="btn" alt="search"/>
+					<input id="searchBtn" type="image" src={search} onClick={Roulette} className="btn" alt="search"/>
+				</div>
+				<div className="inputGroup">
+					<input id="dogsOnly" type="checkbox" onClick={searchFocus} value="Dogs Only"/>
+					<label htmlFor="dogsOnly">Dogs Only</label><br/>
+					<input id="catsOnly" type="checkbox" onClick={searchFocus} value="Cats Only"/>
+					<label htmlFor="catsOnly">Cats Only</label><br/>
 				</div>
 				<a className="appLink" href="https://www.petfinder.com" target="_blank" rel="noopener noreferrer">Petfinder</a>
 			</header>
