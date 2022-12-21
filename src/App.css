@@ -22,7 +22,7 @@ img:not(.appLogo):not(.locIcon) {
 }
 
 .appLogo {
-  height: 40vmin;
+  height: 60vmin;
   pointer-events: none;
   margin-bottom: 25px;
 }
@@ -78,7 +78,6 @@ input:focus {
 }
 
 .gridContainer {
-  margin: 5%;
   position: absolute;
   display: grid;
   gap: 75px;
@@ -87,6 +86,7 @@ input:focus {
 }
 
 .gridItem {
+  margin: 5%;
   cursor: pointer;
   border-radius: 25px;
   background: #E7E0D3;

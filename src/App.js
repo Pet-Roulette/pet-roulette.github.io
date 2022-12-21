@@ -1,4 +1,4 @@
-import logo from './petrLogo.png';
+import logo from './roulette.png';
 import search from './search.png';
 import './App.css';
 import React, { useRef } from 'react';
@@ -39,7 +39,7 @@ function App() {
 				.then(res => res.json())
 				.then(data => {
 					// fetches information from a secondary API response to use pet name and image features
-					let secondRequest = "https://api.petfinder.com/v2/animals?location=" + zipCode + "&limit=100";
+					let secondRequest = "https://api.petfinder.com/v2/animals?location=" + zipCode + "&limit=100&sort=distance";
 					return fetch(secondRequest, {
 						headers: {
 							Authorization: "Bearer " + data.access_token
@@ -51,7 +51,6 @@ function App() {
 			const printResult = () => {
 				result.then((animalArray) => {
 					const nearbyPets = animalArray.animals
-					console.log(nearbyPets)
 					// for loop that iterates up to 9 animals in the user's vicinity
 					var counter = 1;
 					for (let i = 0; i <= nearbyPets.length; i++) {
