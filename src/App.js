@@ -3,6 +3,7 @@ import search from './search.png';
 import './App.css';
 import React, { useRef } from 'react';
 import Instructions from './Instructions';
+import locationIcon from './locationIcon.svg';
 
 function App() {
 	const inputRef = useRef()
@@ -59,7 +60,20 @@ function App() {
 						}
 						// error handling for missing photo url from Petfinder API
 						try {
-							document.getElementById(String(counter)).innerHTML = nearbyPets[i].name.slice(0, 21) + "<br/>";
+							// json object for readability
+							var currentPet = {"name": nearbyPets[i].name.slice(0, 21), "city": nearbyPets[i].contact.address.city, "state": nearbyPets[i].contact.address.state};
+							// append name to grid
+							document.getElementById(String(counter)).innerHTML = currentPet.name;
+							document.getElementById(String(counter)).innerHTML += "<br/>";
+							// create an img element to display location icon
+							const locIconElement = document.createElement('img');
+							locIconElement.className = "locIcon";
+							locIconElement.src = locationIcon;
+							document.getElementById(String(counter)).appendChild(locIconElement);
+							// append city and state
+							const fullLoc = currentPet.city + ", " + currentPet.state;
+							document.getElementById(String(counter)).innerHTML += fullLoc;
+							document.getElementById(String(counter)).innerHTML += "<br/>";
 							// create an img element to display an image of the available pet
 							var img = document.createElement('img');
 							img.src = nearbyPets[i].photos[0].full;

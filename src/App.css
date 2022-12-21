@@ -6,7 +6,13 @@ body {
   background-color: #282c34;
 }
 
-img:not(.appLogo) {
+.locIcon {
+  width: 20px;
+  height: 20px;
+  padding-right: 5px;
+}
+
+img:not(.appLogo):not(.locIcon) {
   width: auto;
   height: auto;
   object-fit: contain;
