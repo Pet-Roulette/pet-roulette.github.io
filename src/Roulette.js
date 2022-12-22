@@ -1,6 +1,9 @@
 import './App.css';
 import {inputRef} from './App.js'
 import locationIcon from './locationIcon.svg';
+import femaleIcon from './femaleIcon.svg';
+import maleIcon from './maleIcon.svg';
+import unknownIcon from './unknownIcon.svg';
 
 export default function Roulette() {
     var dogsCheck = document.getElementById("dogsOnly")
@@ -62,7 +65,7 @@ export default function Roulette() {
                     // error handling for missing photo url from Petfinder API
                     try {
                         // json object for readability
-                        var currentPet = {"name": nearbyPets[i].name, "city": nearbyPets[i].contact.address.city, "state": nearbyPets[i].contact.address.state, "type": nearbyPets[i].type}
+                        var currentPet = {"name": nearbyPets[i].name, "city": nearbyPets[i].contact.address.city, "state": nearbyPets[i].contact.address.state, "type": nearbyPets[i].type, "gender": nearbyPets[i].gender}
                         if (dogsCheck.checked && catsCheck.checked && !(currentPet.type === "Dog" || currentPet.type === "Cat")) {continue;}
                         else if (dogsCheck.checked && currentPet.type !== "Dog") {continue;}
                         else if (catsCheck.checked && currentPet.type !== "Cat") {continue;}
@@ -72,12 +75,30 @@ export default function Roulette() {
                         document.getElementById(String(counter)).innerHTML += "<br/>";
                         // create an img element to display location icon
                         const locIconElement = document.createElement('img');
-                        locIconElement.className = "locIcon";
+                        locIconElement.className = "icon";
                         locIconElement.src = locationIcon;
                         document.getElementById(String(counter)).appendChild(locIconElement);
                         // append city and state
                         const fullLoc = currentPet.city + ", " + currentPet.state;
                         document.getElementById(String(counter)).innerHTML += fullLoc;
+                        document.getElementById(String(counter)).innerHTML += "<br/>";
+                        // create an img element to display gender icon
+                        const genderIconElement = document.createElement('img');
+                        genderIconElement.className = "icon";
+                        switch (currentPet.gender) {
+                            case "Male":
+                                genderIconElement.src = maleIcon;
+                                break;
+                            case "Female":
+                                genderIconElement.src = femaleIcon;
+                                break;
+                            default:
+                                genderIconElement.src = unknownIcon;
+                                break;
+                        }                        
+                        document.getElementById(String(counter)).appendChild(genderIconElement);
+                        // check if gender is unknown and append gender accordingly
+                        currentPet.gender.toLowerCase() === "unknown" ? document.getElementById(String(counter)).innerHTML += "Unknown Gender" : document.getElementById(String(counter)).innerHTML += currentPet.gender;
                         document.getElementById(String(counter)).innerHTML += "<br/>";
                         // create an img element to display an image of the available pet
                         var img = document.createElement('img');
