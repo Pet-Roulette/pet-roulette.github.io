@@ -18,7 +18,7 @@ img:not(.appLogo):not(.icon) {
   object-fit: contain;
   max-width: 300px;
   max-height: 300px;
-  border-radius: 50%;
+  border-radius: 100%;
 }
 
 .appLogo {
@@ -70,11 +70,22 @@ input {
   font-size: calc(10px + 2vmin);
   color: #533e64;
   padding: 5px;
-  margin-bottom: 10px;
 }
 
 input:focus {
   outline: none;
+}
+
+.checkGroup { 
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.chk {
+  position: relative;
+  margin-right: 50px;
 }
 
 .gridContainer {
@@ -89,7 +100,7 @@ input:focus {
 .gridItem {
   margin: 5%;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 20px;
   background: #E7E0D3;
   text-align: center;
   font-family: "Verdana";

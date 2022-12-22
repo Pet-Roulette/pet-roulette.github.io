@@ -1,11 +1,11 @@
 import './App.css';
 import {inputRef} from './App.js'
-import locationIcon from './locationIcon.svg';
+import locationIcon from './location.png';
 import femaleIcon from './femaleIcon.svg';
 import maleIcon from './maleIcon.svg';
 import unknownIcon from './unknownIcon.svg';
 
-export default function Roulette() {
+export default function Spin() {
     var dogsCheck = document.getElementById("dogsOnly")
     var catsCheck = document.getElementById("catsOnly")
     const zipCode =  inputRef.current.value
@@ -34,27 +34,17 @@ export default function Roulette() {
                         Authorization: "Bearer " + data.access_token
                     }
                 })
-                // const result2 = fetch("https://api.petfinder.com/v2/animals?location=" + zipCode + "&limit=100&sort=distance", {
-                // 	headers: {
-                // 		Authorization: "Bearer " + data.access_token
-                // 	}
-                // })
-                // .then((data) => console.log(data))
-                // .then(res => {
-                // 	if (res.status === 400) {
-                // 		throw new TypeError();
-                // 	}
-                // 	res.json()
-                // })
-                // return result2;
             })
             .then(res => res.json())
-            // .catch(ex => {
-            // 	console.log(ex);
-            // });
         // Above code returns a Promise object, which we can extract an array of animals
         const printResult = () => {
             result.then((animalArray) => {
+                if (animalArray.status === 400) {
+                    throw new Error("zip code does not exist");
+                }
+                else if (animalArray.animals.length === 0) {
+                    throw new Error("empty array retrieved");
+                }
                 const nearbyPets = animalArray.animals
                 // for loop that iterates up to 9 animals in the user's vicinity
                 var counter = 1;
@@ -66,9 +56,15 @@ export default function Roulette() {
                     try {
                         // json object for readability
                         var currentPet = {"name": nearbyPets[i].name, "city": nearbyPets[i].contact.address.city, "state": nearbyPets[i].contact.address.state, "type": nearbyPets[i].type, "gender": nearbyPets[i].gender}
-                        if (dogsCheck.checked && catsCheck.checked && !(currentPet.type === "Dog" || currentPet.type === "Cat")) {continue;}
-                        else if (dogsCheck.checked && currentPet.type !== "Dog") {continue;}
-                        else if (catsCheck.checked && currentPet.type !== "Cat") {continue;}
+                        if (dogsCheck.checked && catsCheck.checked && !(currentPet.type === "Dog" || currentPet.type === "Cat")) {
+                            continue;
+                        }
+                        else if (dogsCheck.checked && currentPet.type !== "Dog") {
+                            continue;
+                        }
+                        else if (catsCheck.checked && currentPet.type !== "Cat") {
+                            continue;
+                        }
                         // append name to grid
                         document.getElementById(String(counter)).className = "gridItem";
                         document.getElementById(String(counter)).innerHTML = currentPet.name;
@@ -112,16 +108,16 @@ export default function Roulette() {
                         counter++;
                     }
                     catch (ex) {
-                        console.log(ex)
+                        console.log(ex.name + ": missing photo files");
                     }
                 }
+                document.getElementById("header").innerHTML = "";
             });
         };
         printResult();
         // comment below is a way to clear our page to display information about pets
-        document.getElementById("header").innerHTML = "";
     }
     catch (ex) {
-        console.log(ex)
+        console.log(ex.name + ": invalid zip code");
     }
 }

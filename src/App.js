@@ -2,7 +2,7 @@ import logo from './roulette.png';
 import search from './search.png';
 import './App.css';
 import React, { useRef } from 'react';
-import Roulette from './Roulette';
+import Spin from './Spin';
 
 export var inputRef = "";
 
@@ -71,13 +71,13 @@ function App() {
 				</div>
 				<div className="inputGroup">
 					<input id="textInput" ref={inputRef} type="text" placeholder="Enter zip code"/>
-					<input id="searchBtn" type="image" src={search} onClick={Roulette} className="btn" alt="search"/>
+					<input id="searchBtn" type="image" src={search} onClick={Spin} className="btn" alt="search"/>
 				</div>
-				<div className="inputGroup">
+				<div className="checkGroup">
 					<input id="dogsOnly" type="checkbox" onClick={searchFocus} value="Dogs Only"/>
-					<label htmlFor="dogsOnly">Dogs Only</label><br/>
+					<label htmlFor="dogsOnly" className="chk">Dogs Only</label>
 					<input id="catsOnly" type="checkbox" onClick={searchFocus} value="Cats Only"/>
-					<label htmlFor="catsOnly">Cats Only</label><br/>
+					<label htmlFor="catsOnly" className="chk" >Cats Only</label>
 				</div>
 				<a className="appLink" href="https://www.petfinder.com" target="_blank" rel="noopener noreferrer">Petfinder</a>
 			</header>
