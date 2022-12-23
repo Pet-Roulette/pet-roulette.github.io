@@ -1,9 +1,6 @@
 import './App.css';
 import {inputRef} from './App.js'
 import locationIcon from './location.png';
-import femaleIcon from './femaleIcon.svg';
-import maleIcon from './maleIcon.svg';
-import unknownIcon from './unknownIcon.svg';
 
 export default function Spin() {
     var dogsCheck = document.getElementById("dogsOnly")
@@ -55,7 +52,9 @@ export default function Spin() {
                     // error handling for missing photo url from Petfinder API
                     try {
                         // json object for readability
-                        var currentPet = {"name": nearbyPets[i].name, "city": nearbyPets[i].contact.address.city, "state": nearbyPets[i].contact.address.state, "type": nearbyPets[i].type, "gender": nearbyPets[i].gender}
+                        var currentPet = {"name": nearbyPets[i].name, "city": nearbyPets[i].contact.address.city, "state": nearbyPets[i].contact.address.state, 
+                        "type": nearbyPets[i].type, "gender": nearbyPets[i].gender, "unknown": nearbyPets[i].breeds.unknown, "mixed": nearbyPets[i].breeds.mixed,
+                        "primary": nearbyPets[i].breeds.primary, "secondary": nearbyPets[i].breeds.secondary, "age": nearbyPets[i].age, "image": nearbyPets[i].photos[0].full}
                         if (dogsCheck.checked && catsCheck.checked && !(currentPet.type === "Dog" || currentPet.type === "Cat")) {
                             continue;
                         }
@@ -65,41 +64,58 @@ export default function Spin() {
                         else if (catsCheck.checked && currentPet.type !== "Cat") {
                             continue;
                         }
-                        // append name to grid
+                        // set class name of grid item
                         document.getElementById(String(counter)).className = "gridItem";
-                        document.getElementById(String(counter)).innerHTML = currentPet.name;
-                        document.getElementById(String(counter)).innerHTML += "<br/>";
-                        // create an img element to display location icon
+                        // append name to grid
+                        var nameDiv = document.createElement("div");
+                        nameDiv.className = "nameDiv";
+                        const nameNode = document.createTextNode(currentPet.name);
+                        nameDiv.appendChild(nameNode);
+                        document.getElementById(String(counter)).appendChild(nameDiv);
+                        // clarify value of gender if necessary
+                        if (currentPet.gender.toLowerCase() === "unknown")
+                        {
+                            currentPet.gender = "Unknown Gender";
+                        }
+                        // create location div and append location icon
+                        var locDiv = document.createElement("div");
+                        locDiv.className = "locDescription";
                         const locIconElement = document.createElement('img');
                         locIconElement.className = "icon";
                         locIconElement.src = locationIcon;
-                        document.getElementById(String(counter)).appendChild(locIconElement);
-                        // append city and state
+                        locDiv.appendChild(locIconElement);
+                        // append city and state to location div
                         const fullLoc = currentPet.city + ", " + currentPet.state;
-                        document.getElementById(String(counter)).innerHTML += fullLoc;
-                        document.getElementById(String(counter)).innerHTML += "<br/>";
-                        // create an img element to display gender icon
-                        const genderIconElement = document.createElement('img');
-                        genderIconElement.className = "icon";
-                        switch (currentPet.gender) {
-                            case "Male":
-                                genderIconElement.src = maleIcon;
-                                break;
-                            case "Female":
-                                genderIconElement.src = femaleIcon;
-                                break;
-                            default:
-                                genderIconElement.src = unknownIcon;
-                                break;
-                        }                        
-                        document.getElementById(String(counter)).appendChild(genderIconElement);
-                        // check if gender is unknown and append gender accordingly
-                        currentPet.gender.toLowerCase() === "unknown" ? document.getElementById(String(counter)).innerHTML += "Unknown Gender" : document.getElementById(String(counter)).innerHTML += currentPet.gender;
-                        document.getElementById(String(counter)).innerHTML += "<br/>";
-                        // create an img element to display an image of the available pet
-                        var img = document.createElement('img');
-                        img.src = nearbyPets[i].photos[0].full;
-                        document.getElementById(String(counter)).appendChild(img);
+                        const fullLocElement = document.createElement("div");
+                        const fullLocNode = document.createTextNode(fullLoc);
+                        fullLocElement.appendChild(fullLocNode);
+                        locDiv.appendChild(fullLocElement);
+                        document.getElementById(String(counter)).appendChild(locDiv);
+                        // create pet image element and append full size photo
+                        var petImg = document.createElement('img');
+                        petImg.src = currentPet.image;
+                        document.getElementById(String(counter)).appendChild(petImg);
+                        // format breed string
+                        let breed;
+                        if (!currentPet.unknown)
+                        {
+                            if (currentPet.mixed)
+                            {
+                                breed = currentPet.primary + "/" + currentPet.secondary;
+                            } else {
+                                breed = currentPet.primary;
+                            }
+                        } else {
+                            breed = "Unknown Breed";
+                        }
+                        // create pet description div and append breed, gender, and age
+                        var descriptionDiv = document.createElement("div");
+                        descriptionDiv.className = "petDescription";
+                        // bga = breed, gender, age
+                        const bga = breed + " • " + currentPet.gender + " • " + currentPet.age;
+                        var bgaNode = document.createTextNode(bga);
+                        descriptionDiv.appendChild(bgaNode);
+                        document.getElementById(String(counter)).appendChild(descriptionDiv);
                         document.getElementById(String(counter)).addEventListener("click", petURL);
                         function petURL() {
                             alert('"Redirect to adoption site URL?"')

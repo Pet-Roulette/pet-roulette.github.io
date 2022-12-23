@@ -6,10 +6,35 @@ body {
   background-color: #282c34;
 }
 
+.nameDiv
+{
+  color:#ed1c24;
+  margin-top: 5%;
+  margin-bottom: 5px;
+}
+
+.locDescription
+{
+  color: #533e64;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75em;
+  margin-block: 5px;
+}
+
+.petDescription
+{
+  color: #533e64;
+  font-size: 0.75em;
+  margin-top: 5px;
+  margin-bottom: 5%;
+  margin-inline: 5%;
+}
+
 .icon {
-  width: 20px;
-  height: 20px;
-  padding-right: 5px;
+  width: 1.5em;
+  height: 1.5em;
 }
 
 img:not(.appLogo):not(.icon) {
@@ -50,7 +75,7 @@ img:not(.appLogo):not(.icon) {
 .btn {
   margin-left: 12px;
   position: absolute;
-  width: calc(10px + 2vmin);
+  width: calc(10px + 2.5vmin);
   height: auto;
   border-radius: 0px;
   background: white;
@@ -104,8 +129,9 @@ input:focus {
   background: #E7E0D3;
   text-align: center;
   font-family: "Verdana";
-  font-size: calc(10px + 2vmin);
-  color: #533e64;
+  font-size: calc(10px + 2.5vmin);
+  /* color: #533e64; */
+  color: #ed1c24;
 }
 
 .gridItem:hover {
