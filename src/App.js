@@ -14,12 +14,11 @@ function App() {
 	const handleChangeSlide = () => {
 		setCheckedSlide((prev) => !prev);
 	};
-	  const handleChangeZoom = () => {
+	const handleChangeZoom = () => {
 		setCheckedZoom((prev) => !prev);
   	};
 	inputRef = useRef()
-	function searchFocus() {document.getElementById("textInput").focus();}
-	window.onload = function(){
+	function searchFocus() {
 		document.getElementById("textInput").focus();
 		var input = document.getElementById("textInput");
 		input.addEventListener("keypress", function(event) {
@@ -28,20 +27,26 @@ function App() {
 				document.getElementById("searchBtn").click();
 			}
 		})
-	};
-	function callSpin() {
-		setTimeout(checkError, 2500);
-		if (Spin()) {
-			handleChangeSlide();
-		}
 	}
+	window.onload = function(){
+		searchFocus();
+	};
 	function checkError() {
 		if (apiError) {
 			handleChangeSlide();
+			document.getElementById("textInput").placeholder = "Invalid zip code";
+			setTimeout(searchFocus, 500);
 		}
 		else {
 			handleChangeZoom();
 		}
+	}
+	function callSpin() {
+		if (Spin()) {
+			setTimeout(checkError, 2500);
+			handleChangeSlide();
+		}
+		document.getElementById("textInput").focus();
 	}
 	return (
 	<>
@@ -85,7 +90,7 @@ function App() {
 				<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '13600ms' : '0ms' }}><div id="35" className="gridItemBlack"></div></Zoom>
 				<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '14000ms' : '0ms' }}><div id="36" className="gridItemRed"></div></Zoom>
 			</div>
-			<Slide direction="right" in={checkedSlide} mountOnEnter unmountOnExit>
+			<Slide direction="right" in={checkedSlide} mountOnEnter>
 				<header id="header" className="appHeader">
 					<img src={roulette} className="appLogo" alt="Spinning Roulette" />
 					<div>
@@ -94,7 +99,7 @@ function App() {
 						Good luck hitting the jackpot!
 					</div>
 					<div className="inputGroup">
-						<input id="textInput" ref={inputRef} type="text" placeholder="Enter zip code" autocomplete="off"/>
+						<input id="textInput" ref={inputRef} type="text" placeholder="Enter zip code" autoComplete="off"/>
 						<input id="searchBtn" type="image" src={search} onClick={callSpin} className="btn" alt="search"/>
 					</div>
 					<div className="checkGroup">

@@ -5,14 +5,12 @@ import locationIcon from './location.png';
 export var apiError = false;
 
 export default function Spin() {
+    apiError = false;
     var dogsCheck = document.getElementById("dogsOnly")
     var catsCheck = document.getElementById("catsOnly")
     const zipCode =  inputRef.current.value
     inputRef.current.value = null
-    if (zipCode === '') {
-        return false;
-    }
-    else if (/^\d{5}$/.test(zipCode) === false) {
+    if (zipCode === '' || /^\d{5}$/.test(zipCode) === false) {
         return false;
     }
     try {
