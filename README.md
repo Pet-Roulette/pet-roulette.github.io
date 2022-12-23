@@ -1,6 +1,6 @@
 # Welcome to Pet Roulette!
 
-This project uses [React](https://github.com/facebook/create-react-app), [JavaScript](https://www.javascript.com/), [HTML](https://www.w3schools.com/html/), [CSS](https://www.w3schools.com/css/), [GitHub Pages](https://pages.github.com/), and [Petfinder API](https://www.petfinder.com/developers/).
+This project uses [React](https://github.com/facebook/create-react-app), [JavaScript](https://www.javascript.com/), [HTML](https://www.w3schools.com/html/), [CSS](https://www.w3schools.com/css/), [GitHub Pages](https://pages.github.com/), [Material-UI](https://mui.com/), and [Petfinder API](https://www.petfinder.com/developers/).
 
 Site images are original, digital creations.
 
@@ -28,11 +28,13 @@ Good luck hitting the jackpot!"
 
 **Note: A user is not required to find and adopt a pet!**
 
+![petrLogo](https://github.com/Pet-Roulette/pet-roulette.github.io/blob/main/public/petrLogo.png)
+
 ### Logo Icon
 
-Original favicon used as the tab icon, and as an entertaining spinning object.
+The name of Pet Roulette's mascot is Petr (!lame), which roots from Pet and the R from Roulette.
 
-The name of Pet Roulette's mascot is Petr (!wow), which roots from Pet and the R from Roulette.
+Original favicon used as the tab icon and as an entertaining spinning object on our pixel roulette.
 
 ### FlexBox
 
@@ -40,11 +42,15 @@ Holds an input field and search button.
 
 Requests input of a zip code from user to send as a part of the API request.
 
-### Error Handling
+### MUI Transitions
 
-Website application handles one primary case where a non-existent zip code is sent in the API request.
+Slide the contents of the homepage into the center during render.
 
-Pet Roulette secures a secondary case where the API response provides an empty array of photos.
+Slide the contents of the homepage out of the page on search button click.
+
+Re-slide the contents of the homepage on a nonexistent zip code.
+
+Zoom each animal into the page on a timed basis.
 
 ## Part 2
 
@@ -54,7 +60,15 @@ The secondary page consists of API communication and a grid element:
 
 Dispatch an initial request to Petfinder API (RESTful API) to retrieve an access token for subsequent API calls in cURL format.
 
-Send a secondary request to Petfinder API regarding information (names and images) of animals near the user inputted zip code.
+Send a secondary request to Petfinder API regarding information of animals near the user inputted zip code.
+
+We specifically isolate the name, city, state, type, gender, unknown, mixed, primary, secondary, age, and image from the JSON response.
+
+### Error Handling
+
+Website application handles one primary case where a non-existent zip code is sent in the API request.
+
+Pet Roulette secures a secondary case where the API response provides an empty array of photos.
 
 ### Grid
 

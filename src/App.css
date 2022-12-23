@@ -34,7 +34,7 @@ body {
     height: 1.5em;
 }
 
-img:not(.appLogo):not(.icon) {
+img:not(.appLogo):not(.btn):not(.icon) {
     width: auto;
     height: auto;
     object-fit: contain;

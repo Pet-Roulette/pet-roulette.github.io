@@ -1,6 +1,6 @@
-import logo from './roulette.png';
-import search from './search.png';
 import './App.css';
+import roulette from './roulette.png';
+import search from './search.png';
 import React, { useRef } from 'react';
 import Spin, { apiError } from './Spin';
 import Slide from '@mui/material/Slide';
@@ -87,7 +87,7 @@ function App() {
 			</div>
 			<Slide direction="right" in={checkedSlide} mountOnEnter unmountOnExit>
 				<header id="header" className="appHeader">
-					<img src={logo} className="appLogo" alt="Spinning Roulette" />
+					<img src={roulette} className="appLogo" alt="Spinning Roulette" />
 					<div>
 						Welcome to Pet Roulette!<br/>
 						Adopt among 36 pets in your local area.<br/>
