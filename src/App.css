@@ -1,169 +1,182 @@
 .app {
-  background-color: #282c34;
+    background-color: #282c34;
 }
 
 body {
-  background-color: #282c34;
+    background-color: #282c34;
 }
 
-.nameDiv
-{
-  color:#ed1c24;
-  margin-top: 5%;
-  margin-bottom: 5px;
+.nameDiv {
+    color:#46A35F;
+    margin-top: 5%;
+    margin-bottom: 5px;
 }
 
-.locDescription
-{
-  color: #533e64;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75em;
-  margin-block: 5px;
+.locDescription {
+    color: #533e64;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    margin-block: 5px;
 }
 
-.petDescription
-{
-  color: #533e64;
-  font-size: 0.75em;
-  margin-top: 5px;
-  margin-bottom: 5%;
-  margin-inline: 5%;
+.petDescription {
+    color: #533e64;
+    font-size: 0.75em;
+    margin-top: 5px;
+    margin-bottom: 5%;
+    margin-inline: 5%;
 }
 
 .icon {
-  width: 1.5em;
-  height: 1.5em;
+    width: 1.5em;
+    height: 1.5em;
 }
 
 img:not(.appLogo):not(.icon) {
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  max-width: 300px;
-  max-height: 300px;
-  border-radius: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 100%;
 }
 
 .appLogo {
-  height: 50vmin;
-  pointer-events: none;
-  margin-bottom: 25px;
+    height: 50vmin;
+    pointer-events: none;
+    margin-bottom: 25px;
 }
 
 @media (prefers-reduced-motion: no-preference) and (min-width: 600px) {
-  .appLogo {
-    animation: logoSpin infinite 12s linear;
-  }
-  .gridContainer { grid-template-columns: repeat(3, 1fr); }
+    .appLogo {
+        animation: logoSpin infinite 12s linear;
+    }
+    .gridContainer { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (prefers-reduced-motion: no-preference) and (max-width: 600px) {
-  .appLogo {
-    animation: logoSpin infinite 12s linear;
-  }
-  .gridContainer { grid-template-columns: repeat(1, 1fr); }
+    .appLogo {
+        animation: logoSpin infinite 12s linear;
+    }
+    .gridContainer { grid-template-columns: repeat(1, 1fr); }
 }
 
 .inputGroup { 
-  display: flex;
-  align-items: center;
-  padding: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
 }
 
 .btn {
-  margin-left: 12px;
-  position: absolute;
-  width: calc(10px + 2.5vmin);
-  height: auto;
-  border-radius: 0px;
-  background: white;
-  padding: 2px;
+    margin-left: 12px;
+    position: absolute;
+    width: calc(10px + 2.5vmin);
+    height: auto;
+    border-radius: 0px;
+    background: white;
+    padding: 2px;
 }
 
 .btn:hover {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 
 input {
-  position: relative;
-  margin-top: 10px;
-  border-radius: 25px;
-  text-align: center;
-  font-family: "Verdana";
-  font-size: calc(10px + 2vmin);
-  color: #533e64;
-  padding: 5px;
+    position: relative;
+    margin-top: 10px;
+    border-radius: 25px;
+    text-align: center;
+    font-family: "Verdana";
+    font-size: calc(10px + 2vmin);
+    color: #533e64;
+    padding: 5px;
 }
 
 input:focus {
-  outline: none;
+    outline: none;
 }
 
 .checkGroup { 
-  margin-left: 50px;
-  display: flex;
-  align-items: center;
-  padding: 1rem;
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
 }
 
 .chk {
-  position: relative;
-  margin-right: 50px;
+    position: relative;
+    margin-right: 50px;
 }
 
 .gridContainer {
-  position: absolute;
-  display: grid;
-  gap: 50px;
-  margin: auto;
-  left: 0;
-  right: 0;
+    position: absolute;
+    display: grid;
+    gap: 50px;
+    margin: auto;
+    left: 0;
+    right: 0;
 }
 
-.gridItem {
-  margin: 5%;
-  cursor: pointer;
-  border-radius: 20px;
-  background: #E7E0D3;
-  text-align: center;
-  font-family: "Verdana";
-  font-size: calc(10px + 2.5vmin);
-  /* color: #533e64; */
-  color: #ed1c24;
+.gridItemRed {
+    margin: 5%;
+    cursor: pointer;
+    border-radius: 20px;
+    border-color: #ed1c24;
+    border-style: groove double;
+    border-width: 7px;
+    background: #E7E0D3;
+    text-align: center;
+    font-family: "Verdana";
+    font-size: calc(10px + 2.5vmin);
+    color: #533e64;
+}
+
+.gridItemBlack {
+    margin: 5%;
+    cursor: pointer;
+    border-radius: 20px;
+    border-color: #000000;
+    border-style: dashed double;
+    border-width: 5px;
+    background: #E7E0D3;
+    text-align: center;
+    font-family: "Verdana";
+    font-size: calc(10px + 2.5vmin);
+    color: #533e64;
 }
 
 .gridItem:hover {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 
 .appHeader {
-  text-align: center;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: "Verdana";
-  font-size: calc(10px + 2vmin);
-  color: white;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Verdana";
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .appLink {
-  position: relative;
-  color: #a4ddec;
+    position: relative;
+    color: #a4ddec;
 }
 
 .appLink:hover {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 
 @keyframes logoSpin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

@@ -2,16 +2,18 @@ import './App.css';
 import {inputRef} from './App.js'
 import locationIcon from './location.png';
 
+export var apiError = false;
+
 export default function Spin() {
     var dogsCheck = document.getElementById("dogsOnly")
     var catsCheck = document.getElementById("catsOnly")
     const zipCode =  inputRef.current.value
     inputRef.current.value = null
     if (zipCode === '') {
-        return;
+        return false;
     }
     else if (/^\d{5}$/.test(zipCode) === false) {
-        return;
+        return false;
     }
     try {
         // fetches a token within an API response from Petfinder API
@@ -37,10 +39,14 @@ export default function Spin() {
         const printResult = () => {
             result.then((animalArray) => {
                 if (animalArray.status === 400) {
-                    throw new Error("zip code does not exist");
+                    apiError = true;
+                    console.log("Error: zip code does not exist")
+                    return;
                 }
                 else if (animalArray.animals.length === 0) {
-                    throw new Error("empty array retrieved");
+                    apiError = true;
+                    console.log("Error: no animals available in the area")
+                    return;
                 }
                 const nearbyPets = animalArray.animals
                 // for loop that iterates up to 9 animals in the user's vicinity
@@ -52,9 +58,14 @@ export default function Spin() {
                     // error handling for missing photo url from Petfinder API
                     try {
                         // json object for readability
-                        var currentPet = {"name": nearbyPets[i].name, "city": nearbyPets[i].contact.address.city, "state": nearbyPets[i].contact.address.state, 
-                        "type": nearbyPets[i].type, "gender": nearbyPets[i].gender, "unknown": nearbyPets[i].breeds.unknown, "mixed": nearbyPets[i].breeds.mixed,
-                        "primary": nearbyPets[i].breeds.primary, "secondary": nearbyPets[i].breeds.secondary, "age": nearbyPets[i].age, "image": nearbyPets[i].photos[0].full}
+                        var currentPet = {
+                            "name": nearbyPets[i].name, "city": nearbyPets[i].contact.address.city, 
+                            "state": nearbyPets[i].contact.address.state, "type": nearbyPets[i].type, 
+                            "gender": nearbyPets[i].gender, "unknown": nearbyPets[i].breeds.unknown, 
+                            "mixed": nearbyPets[i].breeds.mixed, "primary": nearbyPets[i].breeds.primary, 
+                            "secondary": nearbyPets[i].breeds.secondary, "age": nearbyPets[i].age, 
+                            "image": nearbyPets[i].photos[0].full
+                        }
                         if (dogsCheck.checked && catsCheck.checked && !(currentPet.type === "Dog" || currentPet.type === "Cat")) {
                             continue;
                         }
@@ -64,8 +75,6 @@ export default function Spin() {
                         else if (catsCheck.checked && currentPet.type !== "Cat") {
                             continue;
                         }
-                        // set class name of grid item
-                        document.getElementById(String(counter)).className = "gridItem";
                         // append name to grid
                         var nameDiv = document.createElement("div");
                         nameDiv.className = "nameDiv";
@@ -127,13 +136,14 @@ export default function Spin() {
                         console.log(ex.name + ": missing photo files");
                     }
                 }
-                document.getElementById("header").innerHTML = "";
-            });
-        };
-        printResult();
+            })
+        }
+        printResult()
         // comment below is a way to clear our page to display information about pets
+        return true;
     }
     catch (ex) {
         console.log(ex.name + ": invalid zip code");
+        return false;
     }
 }
