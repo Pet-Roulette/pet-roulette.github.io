@@ -108,7 +108,7 @@ export default function Spin() {
                         {
                             if (currentPet.mixed)
                             {
-                                breed = currentPet.primary + "/" + currentPet.secondary;
+                                breed = currentPet.primary + " / " + currentPet.secondary;
                             } else {
                                 breed = currentPet.primary;
                             }

@@ -134,9 +134,6 @@ input:focus {
     position: absolute;
     display: grid;
     gap: 50px;
-    margin: auto;
-    left: 0;
-    right: 0;
 }
 
 .gridItemRed {
