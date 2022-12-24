@@ -20,6 +20,9 @@ function App() {
 	inputRef = useRef()
 	function searchFocus() {
 		document.getElementById("textInput").focus();
+	}
+	window.onload = function(){
+		searchFocus();
 		var input = document.getElementById("textInput");
 		input.addEventListener("keypress", function(event) {
 			if (event.key === "Enter") {
@@ -27,9 +30,6 @@ function App() {
 				document.getElementById("searchBtn").click();
 			}
 		})
-	}
-	window.onload = function(){
-		searchFocus();
 	};
 	function checkError() {
 		if (apiError) {
@@ -39,6 +39,7 @@ function App() {
 		}
 		else {
 			handleChangeZoom();
+			document.getElementById("textInput").placeholder = "Enter zip code";
 		}
 	}
 	function callSpin() {
@@ -46,13 +47,26 @@ function App() {
 			setTimeout(checkError, 2500);
 			handleChangeSlide();
 		}
-		document.getElementById("textInput").focus();
+		else {
+			document.getElementById("textInput").placeholder = "Invalid zip code";
+			searchFocus();
+		}
+		
+	}
+	function goBack() {
+		handleChangeSlide();
+		handleChangeZoom();
+		for (let i = 1; i <= 36; i++) {
+			document.getElementById(String(i)).innerHTML = "";
+		}
+		setTimeout(searchFocus, 500);
 	}
 	return (
 	<>
 		<meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 		<div className="app">
 			<div className="gridContainer">
+				<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '2000ms' : '0ms' }}><input type="button" value="Back" onClick={goBack} className="btn"/></Zoom>
 				<Zoom in={checkedZoom}><div id="1" className="gridItemRed"></div></Zoom>
 				<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '400ms' : '0ms' }}><div id="2" className="gridItemBlack"></div></Zoom>
 				<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '800ms' : '0ms' }}><div id="3" className="gridItemRed"></div></Zoom>
@@ -100,7 +114,7 @@ function App() {
 					</div>
 					<div className="inputGroup">
 						<input id="textInput" ref={inputRef} type="text" placeholder="Enter zip code" autoComplete="off"/>
-						<input id="searchBtn" type="image" src={search} onClick={callSpin} className="btn" alt="search"/>
+						<input id="searchBtn" type="image" src={search} onClick={callSpin} className="search" alt="search"/>
 					</div>
 					<div className="checkGroup">
 						<input id="dogsOnly" type="checkbox" onClick={searchFocus} value="Dogs Only"/>
