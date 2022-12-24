@@ -75,7 +75,7 @@ export default function Spin() {
                         // append name to grid
                         var nameDiv = document.createElement("div");
                         nameDiv.className = "nameDiv";
-                        const nameNode = document.createTextNode(currentPet.name);
+                        const nameNode = document.createTextNode(currentPet.name.trim());
                         nameDiv.appendChild(nameNode);
                         document.getElementById(String(counter)).appendChild(nameDiv);
                         // clarify value of gender if necessary
@@ -91,7 +91,7 @@ export default function Spin() {
                         locIconElement.src = locationIcon;
                         locDiv.appendChild(locIconElement);
                         // append city and state to location div
-                        const fullLoc = currentPet.city + ", " + currentPet.state;
+                        const fullLoc = currentPet.city.trim() + ", " + currentPet.state.trim();
                         const fullLocElement = document.createElement("div");
                         const fullLocNode = document.createTextNode(fullLoc);
                         fullLocElement.appendChild(fullLocNode);
@@ -107,9 +107,9 @@ export default function Spin() {
                         {
                             if (currentPet.mixed && currentPet.secondary !== null)
                             {
-                                breed = currentPet.primary + " / " + currentPet.secondary;
+                                breed = currentPet.primary.trim() + " / " + currentPet.secondary.trim();
                             } else {
-                                breed = currentPet.primary;
+                                breed = currentPet.primary.trim();
                             }
                         } else {
                             breed = "Unknown Breed";
@@ -118,7 +118,7 @@ export default function Spin() {
                         var descriptionDiv = document.createElement("div");
                         descriptionDiv.className = "petDescription";
                         // bga = breed, gender, age
-                        const bga = breed + " • " + currentPet.gender + " • " + currentPet.age;
+                        const bga = breed + " • " + currentPet.gender.trim() + " • " + currentPet.age.trim();
                         var bgaNode = document.createTextNode(bga);
                         descriptionDiv.appendChild(bgaNode);
                         document.getElementById(String(counter)).appendChild(descriptionDiv);
@@ -136,7 +136,6 @@ export default function Spin() {
             })
         }
         printResult()
-        // comment below is a way to clear our page to display information about pets
         return true;
     }
     catch (ex) {

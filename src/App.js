@@ -22,7 +22,6 @@ function App() {
 		document.getElementById("textInput").focus();
 	}
 	window.onload = function(){
-		searchFocus();
 		var input = document.getElementById("textInput");
 		input.addEventListener("keypress", function(event) {
 			if (event.key === "Enter") {
@@ -65,6 +64,8 @@ function App() {
 			document.getElementById(String(i)).innerHTML = "";
 		}
 		setTimeout(searchFocus, 750);
+		document.getElementById("dogsOnly").checked = false;
+		document.getElementById("catsOnly").checked = false;
 	}
 	return (
 	<>
@@ -120,7 +121,7 @@ function App() {
 						Good luck hitting the jackpawt!
 					</div>
 					<div className="inputGroup">
-						<input id="textInput" ref={inputRef} type="search" maxLength="5" size="25" placeholder="Enter zip code" autoComplete="off"/>
+						<input id="textInput" ref={inputRef} type="search" maxLength="5" size="25" placeholder="Enter zip code" autofocus="true" autoComplete="off"/>
 						<input id="searchBtn" type="image" src={search} onClick={callSpin} className="search" alt="search"/>
 					</div>
 					<label id='progressMessage' className='progressMessage'></label>
