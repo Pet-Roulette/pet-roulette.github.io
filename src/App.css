@@ -110,7 +110,7 @@ img:not(.appLogo):not(.search):not(.icon) {
 
 .search {
     cursor: pointer;
-    margin-left: 11px;
+    margin-left: 12px;
     position: absolute;
     width: calc(10px + 2vmin);
     height: auto;

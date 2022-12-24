@@ -120,7 +120,7 @@ function App() {
 						Good luck hitting the jackpawt!
 					</div>
 					<div className="inputGroup">
-						<input id="textInput" ref={inputRef} type="search" placeholder="Enter zip code" autoComplete="off"/>
+						<input id="textInput" ref={inputRef} type="search" maxLength="5" size="25" placeholder="Enter zip code" autoComplete="off"/>
 						<input id="searchBtn" type="image" src={search} onClick={callSpin} className="search" alt="search"/>
 					</div>
 					<label id='progressMessage' className='progressMessage'></label>
