@@ -64,8 +64,9 @@ export default function Spin() {
                             "secondary": nearbyPets[i].breeds.secondary, "age": nearbyPets[i].age, 
                             "image": nearbyPets[i].photos[0].full
                         }
-                        console.log(String(i) + nearbyPets[i].species)
-                        if (dogsCheck && catsCheck && (currentPet.type === "Dog" || currentPet.type === "Cat")) {}
+                        if (dogsCheck && catsCheck && (currentPet.type === "Dog" || currentPet.type === "Cat")) {
+                            // initial check when both boxes are checked
+                        }
                         else if (dogsCheck && catsCheck && !(currentPet.type === "Dog" || currentPet.type === "Cat")) {
                             continue;
                         }

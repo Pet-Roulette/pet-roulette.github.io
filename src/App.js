@@ -9,6 +9,17 @@ import Zoom from '@mui/material/Zoom';
 export var inputRef = "";
 
 function App() {
+	// pet grid item roulette-themed borders
+	const redStyle = {
+		"border-width": "7px",
+		"border-style": "groove double",
+		"border-color": "#ed1c24"
+	};
+	const blackStyle = {
+		"border-width": "5px",
+		"border-style": "dashed double",
+		"border-color": "#000000"
+	};
 	const [checkedSlide, setCheckedSlide] = React.useState(true);
 	const [checkedZoom, setCheckedZoom] = React.useState(false);
 	const handleChangeSlide = () => {
@@ -38,8 +49,6 @@ function App() {
 	function checkError() {
 		if (apiError) {
 			updateMessage();
-			setTimeout(searchFocus, 750);
-			
 		}
 		else {
 			handleChangeSlide();
@@ -74,42 +83,42 @@ function App() {
 			<Zoom in={checkedZoom}>
 				<div className="gridContainer">
 					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '2000ms' : '0ms' }}><input type="button" value="Back" onClick={goBack} className="btn"/></Zoom>
-					<Zoom in={checkedZoom}><div id="1" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '400ms' : '0ms' }}><div id="2" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '800ms' : '0ms' }}><div id="3" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '1200ms' : '0ms' }}><div id="4" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '1600ms' : '0ms' }}><div id="5" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '2000ms' : '0ms' }}><div id="6" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '2400ms' : '0ms' }}><div id="7" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '2800ms' : '0ms' }}><div id="8" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '3200ms' : '0ms' }}><div id="9" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '3600ms' : '0ms' }}><div id="10" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '4000ms' : '0ms' }}><div id="11" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '4400ms' : '0ms' }}><div id="12" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '4800ms' : '0ms' }}><div id="13" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '5200ms' : '0ms' }}><div id="14" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '5600ms' : '0ms' }}><div id="15" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '6000ms' : '0ms' }}><div id="16" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '6400ms' : '0ms' }}><div id="17" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '6800ms' : '0ms' }}><div id="18" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '7200ms' : '0ms' }}><div id="19" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '7600ms' : '0ms' }}><div id="20" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '8000ms' : '0ms' }}><div id="21" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '8400ms' : '0ms' }}><div id="22" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '8800ms' : '0ms' }}><div id="23" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '9200ms' : '0ms' }}><div id="24" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '9600ms' : '0ms' }}><div id="25" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '10000ms' : '0ms' }}><div id="26" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '10400ms' : '0ms' }}><div id="27" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '10800ms' : '0ms' }}><div id="28" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '11200ms' : '0ms' }}><div id="29" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '11600ms' : '0ms' }}><div id="30" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '12000ms' : '0ms' }}><div id="31" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '12400ms' : '0ms' }}><div id="32" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '12800ms' : '0ms' }}><div id="33" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '13200ms' : '0ms' }}><div id="34" className="gridItemRed"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '13600ms' : '0ms' }}><div id="35" className="gridItemBlack"></div></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '14000ms' : '0ms' }}><div id="36" className="gridItemRed"></div></Zoom>
+					<Zoom in={checkedZoom}><div id="1" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '400ms' : '0ms' }}><div id="2" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '800ms' : '0ms' }}><div id="3" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '1200ms' : '0ms' }}><div id="4" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '1600ms' : '0ms' }}><div id="5" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '2000ms' : '0ms' }}><div id="6" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '2400ms' : '0ms' }}><div id="7" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '2800ms' : '0ms' }}><div id="8" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '3200ms' : '0ms' }}><div id="9" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '3600ms' : '0ms' }}><div id="10" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '4000ms' : '0ms' }}><div id="11" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '4400ms' : '0ms' }}><div id="12" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '4800ms' : '0ms' }}><div id="13" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '5200ms' : '0ms' }}><div id="14" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '5600ms' : '0ms' }}><div id="15" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '6000ms' : '0ms' }}><div id="16" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '6400ms' : '0ms' }}><div id="17" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '6800ms' : '0ms' }}><div id="18" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '7200ms' : '0ms' }}><div id="19" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '7600ms' : '0ms' }}><div id="20" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '8000ms' : '0ms' }}><div id="21" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '8400ms' : '0ms' }}><div id="22" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '8800ms' : '0ms' }}><div id="23" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '9200ms' : '0ms' }}><div id="24" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '9600ms' : '0ms' }}><div id="25" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '10000ms' : '0ms' }}><div id="26" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '10400ms' : '0ms' }}><div id="27" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '10800ms' : '0ms' }}><div id="28" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '11200ms' : '0ms' }}><div id="29" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '11600ms' : '0ms' }}><div id="30" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '12000ms' : '0ms' }}><div id="31" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '12400ms' : '0ms' }}><div id="32" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '12800ms' : '0ms' }}><div id="33" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '13200ms' : '0ms' }}><div id="34" className="gridItem" style={redStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '13600ms' : '0ms' }}><div id="35" className="gridItem" style={blackStyle}></div></Zoom>
+					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '14000ms' : '0ms' }}><div id="36" className="gridItem" style={redStyle}></div></Zoom>
 				</div>
 			</Zoom>
 			<Slide direction="right" in={checkedSlide} mountOnEnter>
@@ -121,7 +130,7 @@ function App() {
 						Good luck hitting the jackpawt!
 					</div>
 					<div className="inputGroup">
-						<input id="textInput" ref={inputRef} type="search" maxLength="5" size="25" placeholder="Enter zip code" autofocus="true" autoComplete="off"/>
+						<input id="textInput" ref={inputRef} type="search" maxLength="5" size="25" placeholder="Enter zip code" autoFocus={true} autoComplete="off"/>
 						<input id="searchBtn" type="image" src={search} onClick={callSpin} className="search" alt="search"/>
 					</div>
 					<label id='progressMessage' className='progressMessage'></label>
@@ -131,7 +140,6 @@ function App() {
 						<input id="catsOnly" type="checkbox" onClick={searchFocus} value="Cats Only"/>
 						<label htmlFor="catsOnly" className="chk" >Cats Only</label>
 					</div>
-					<a className="appLink" href="https://www.petfinder.com" target="_blank" rel="noopener noreferrer">Petfinder</a>
 				</header>
 			</Slide>
 		</div>

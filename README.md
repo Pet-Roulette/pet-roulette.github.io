@@ -6,6 +6,8 @@ Site images are original, digital creations.
 
 ## Part 1
 
+![appPic1.png](https://github.com/Pet-Roulette/pet-roulette.github.io/blob/main/public/appPic1.png)
+
 In the homepage, there are multiple key elements:
 
 ### Instructions
@@ -28,9 +30,9 @@ Good luck hitting the jackpawt!"
 
 **Note: A user is not required to find and adopt a pet!**
 
-![petrLogo](https://github.com/Pet-Roulette/pet-roulette.github.io/blob/main/public/petrLogo.png)
-
 ### Logo Icon
+
+![petrLogo](https://github.com/Pet-Roulette/pet-roulette.github.io/blob/main/public/petrLogo.png)
 
 The name of Pet Roulette's mascot is Petr (!lame), which roots from Pet and the R from Roulette.
 
@@ -41,6 +43,14 @@ Original favicon used as the tab icon and as an entertaining spinning object on 
 Holds an input field and search button.
 
 Requests input of a zip code from user to send as a part of the API request.
+
+Search button and clear text button were digitically drawn.
+
+### Checkboxes
+
+Restricts animal results based on user preference.
+
+Multiple boxes can be checked.
 
 ### MUI Transitions
 
@@ -54,7 +64,17 @@ Zoom each animal into the page on a timed basis.
 
 ## Part 2
 
-The secondary page consists of API communication and a grid element:
+![appPic2.png](https://github.com/Pet-Roulette/pet-roulette.github.io/blob/main/public/appPic2.png)
+
+The secondary page consists of a back button, API communication, error handling, and grid elements:
+
+### Back Button
+
+Transparent, bordered back button to go back to the home page.
+
+Initiates exit zoom transition and slides the home page in.
+
+Resets all specifications and inputted text.
 
 ### API Communication
 
@@ -75,6 +95,10 @@ Pet Roulette secures a secondary case where the API response provides an empty a
 Implemented a grid system to layout items that displays names and images of 36 pets.
 
 Grid layout and information is depicted/adjusted differently depending on the user's device.
+
+FlexBoxes are used inside the grid item to organize the format of animal information.
+
+All grid items in the container depict a roulette table (black and red themes).
 
 **For PC: Organize 3 columns of pet information that the user can scroll down.**
 
