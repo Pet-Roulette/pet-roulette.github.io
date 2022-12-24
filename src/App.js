@@ -34,21 +34,25 @@ function App() {
 	function checkError() {
 		if (apiError) {
 			handleChangeSlide();
-			document.getElementById("textInput").placeholder = "Invalid zip code";
+			document.getElementById("errorMessage").innerHTML = "Invalid zip code";
+			document.getElementById("textInput").style.backgroundColor = "#FDDCD8";
 			setTimeout(searchFocus, 500);
+			
 		}
 		else {
 			handleChangeZoom();
-			document.getElementById("textInput").placeholder = "Enter zip code";
+			document.getElementById("errorMessage").innerHTML = "";
+			document.getElementById("textInput").style.backgroundColor = "#FFFFFF";
 		}
 	}
 	function callSpin() {
 		if (Spin()) {
 			setTimeout(checkError, 2500);
-			handleChangeSlide();
+			setTimeout(handleChangeSlide, 2500);
 		}
 		else {
-			document.getElementById("textInput").placeholder = "Invalid zip code";
+			document.getElementById("errorMessage").innerHTML = "Invalid zip code";
+			document.getElementById("textInput").style.backgroundColor = "#FDDCD8";
 			searchFocus();
 		}
 		
@@ -115,9 +119,10 @@ function App() {
 						Good luck hitting the jackpot!
 					</div>
 					<div className="inputGroup">
-						<input id="textInput" ref={inputRef} type="text" placeholder="Enter zip code" autoComplete="off"/>
-						<input id="searchBtn" type="image" src={search} onClick={callSpin} className="search" alt="search"/>
+						<input id="textInput" ref={inputRef} type="search" placeholder="Enter zip code" autoComplete="off"/>
+						<input id="searchBtn" type="image" src={search} onClick={callSpin} className="search" alt="search"/>				
 					</div>
+					<label id='errorMessage' className='errorMessage'></label>
 					<div className="checkGroup">
 						<input id="dogsOnly" type="checkbox" onClick={searchFocus} value="Dogs Only"/>
 						<label htmlFor="dogsOnly" className="chk">Dogs Only</label>
