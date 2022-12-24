@@ -6,8 +6,8 @@ export var apiError = false;
 
 export default function Spin() {
     apiError = false;
-    var dogsCheck = document.getElementById("dogsOnly")
-    var catsCheck = document.getElementById("catsOnly")
+    var dogsCheck = document.getElementById("dogsOnly").checked
+    var catsCheck = document.getElementById("catsOnly").checked
     const zipCode =  inputRef.current.value
     inputRef.current.value = null
     if (zipCode === '' || /^\d{5}$/.test(zipCode) === false) {
@@ -58,19 +58,18 @@ export default function Spin() {
                         // json object for readability
                         var currentPet = {
                             "name": nearbyPets[i].name, "city": nearbyPets[i].contact.address.city, 
-                            "state": nearbyPets[i].contact.address.state, "type": nearbyPets[i].type, 
+                            "state": nearbyPets[i].contact.address.state, "type": nearbyPets[i].species, 
                             "gender": nearbyPets[i].gender, "unknown": nearbyPets[i].breeds.unknown, 
                             "mixed": nearbyPets[i].breeds.mixed, "primary": nearbyPets[i].breeds.primary, 
                             "secondary": nearbyPets[i].breeds.secondary, "age": nearbyPets[i].age, 
                             "image": nearbyPets[i].photos[0].full
                         }
-                        if (dogsCheck.checked && catsCheck.checked && !(currentPet.type === "Dog" || currentPet.type === "Cat")) {
+                        console.log(String(i) + nearbyPets[i].species)
+                        if (dogsCheck && catsCheck && (currentPet.type === "Dog" || currentPet.type === "Cat")) {}
+                        else if (dogsCheck && catsCheck && !(currentPet.type === "Dog" || currentPet.type === "Cat")) {
                             continue;
                         }
-                        else if (dogsCheck.checked && currentPet.type !== "Dog") {
-                            continue;
-                        }
-                        else if (catsCheck.checked && currentPet.type !== "Cat") {
+                        else if ((dogsCheck && currentPet.type !== "Dog") || (catsCheck && currentPet.type !== "Cat")) {
                             continue;
                         }
                         // append name to grid
@@ -106,7 +105,7 @@ export default function Spin() {
                         let breed;
                         if (!currentPet.unknown)
                         {
-                            if (currentPet.mixed)
+                            if (currentPet.mixed && currentPet.secondary !== null)
                             {
                                 breed = currentPet.primary + " / " + currentPet.secondary;
                             } else {

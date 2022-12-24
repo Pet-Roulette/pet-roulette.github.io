@@ -31,39 +31,40 @@ function App() {
 			}
 		})
 	};
+	function updateMessage(message="Invalid zip code", messageColor="#ed1c24", inputColor="#fddcd8") {
+		document.getElementById("progressMessage").innerHTML = message;
+		document.getElementById("progressMessage").style.color = messageColor;
+		document.getElementById("textInput").style.backgroundColor = inputColor;
+	}
 	function checkError() {
 		if (apiError) {
-			handleChangeSlide();
-			document.getElementById("errorMessage").innerHTML = "Invalid zip code";
-			document.getElementById("textInput").style.backgroundColor = "#FDDCD8";
-			setTimeout(searchFocus, 500);
+			updateMessage();
+			setTimeout(searchFocus, 750);
 			
 		}
 		else {
-			handleChangeZoom();
-			document.getElementById("errorMessage").innerHTML = "";
-			document.getElementById("textInput").style.backgroundColor = "#FFFFFF";
+			handleChangeSlide();
+			setTimeout(handleChangeZoom, 500);
+			updateMessage("", "#3dac55", "#ffffff");
 		}
 	}
 	function callSpin() {
 		if (Spin()) {
+			updateMessage("Processing...", "#3dac55", "#ffffff");
 			setTimeout(checkError, 2500);
-			setTimeout(handleChangeSlide, 2500);
 		}
 		else {
-			document.getElementById("errorMessage").innerHTML = "Invalid zip code";
-			document.getElementById("textInput").style.backgroundColor = "#FDDCD8";
+			updateMessage();
 			searchFocus();
 		}
-		
 	}
 	function goBack() {
-		handleChangeSlide();
 		handleChangeZoom();
+		setTimeout(handleChangeSlide, 500);
 		for (let i = 1; i <= 36; i++) {
 			document.getElementById(String(i)).innerHTML = "";
 		}
-		setTimeout(searchFocus, 500);
+		setTimeout(searchFocus, 750);
 	}
 	return (
 	<>
@@ -72,7 +73,7 @@ function App() {
 			<Zoom in={checkedZoom}>
 				<div className="gridContainer">
 					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '2000ms' : '0ms' }}><input type="button" value="Back" onClick={goBack} className="btn"/></Zoom>
-					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '200ms' : '0ms' }}><div id="1" className="gridItemRed"></div></Zoom>
+					<Zoom in={checkedZoom}><div id="1" className="gridItemRed"></div></Zoom>
 					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '400ms' : '0ms' }}><div id="2" className="gridItemBlack"></div></Zoom>
 					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '800ms' : '0ms' }}><div id="3" className="gridItemRed"></div></Zoom>
 					<Zoom in={checkedZoom} style={{ transitionDelay: checkedZoom ? '1200ms' : '0ms' }}><div id="4" className="gridItemBlack"></div></Zoom>
@@ -116,13 +117,13 @@ function App() {
 					<div>
 						Welcome to Pet Roulette!<br/>
 						Adopt among 36 pets in your local area.<br/>
-						Good luck hitting the jackpot!
+						Good luck hitting the jackpawt!
 					</div>
 					<div className="inputGroup">
 						<input id="textInput" ref={inputRef} type="search" placeholder="Enter zip code" autoComplete="off"/>
-						<input id="searchBtn" type="image" src={search} onClick={callSpin} className="search" alt="search"/>				
+						<input id="searchBtn" type="image" src={search} onClick={callSpin} className="search" alt="search"/>
 					</div>
-					<label id='errorMessage' className='errorMessage'></label>
+					<label id='progressMessage' className='progressMessage'></label>
 					<div className="checkGroup">
 						<input id="dogsOnly" type="checkbox" onClick={searchFocus} value="Dogs Only"/>
 						<label htmlFor="dogsOnly" className="chk">Dogs Only</label>

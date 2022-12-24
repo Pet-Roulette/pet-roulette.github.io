@@ -14,7 +14,7 @@ In the homepage, there are multiple key elements:
 
 Adopt a pet among 36 available in the local vicinity.
 
-Good luck hitting the jackpot!"
+Good luck hitting the jackpawt!"
 
 1. Enter a valid 5-digit zip code into the input field.
 
