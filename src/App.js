@@ -11,14 +11,14 @@ export var inputRef = "";
 function App() {
 	// pet grid item roulette-themed borders
 	const redStyle = {
-		"border-width": "7px",
-		"border-style": "groove double",
-		"border-color": "#ed1c24"
+		"borderWidth": "7px",
+		"borderStyle": "groove double",
+		"borderColor": "#ed1c24"
 	};
 	const blackStyle = {
-		"border-width": "5px",
-		"border-style": "dashed double",
-		"border-color": "#000000"
+		"borderWidth": "5px",
+		"borderStyle": "dashed double",
+		"borderColor": "#000000"
 	};
 	const [checkedSlide, setCheckedSlide] = React.useState(true);
 	const [checkedZoom, setCheckedZoom] = React.useState(false);

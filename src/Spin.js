@@ -9,6 +9,8 @@ export default function Spin() {
     var dogsCheck = document.getElementById("dogsOnly").checked
     var catsCheck = document.getElementById("catsOnly").checked
     const zipCode =  inputRef.current.value
+    const apiKey = process.env.REACT_APP_API_KEY
+    const apiSecret = process.env.REACT_APP_API_SECRET
     inputRef.current.value = null
     if (zipCode === '' || /^\d{5}$/.test(zipCode) === false) {
         return false;
@@ -16,7 +18,7 @@ export default function Spin() {
     try {
         // fetches a token within an API response from Petfinder API
         const result = fetch("https://api.petfinder.com/v2/oauth2/token", {
-            body: "grant_type=client_credentials&client_id=fb6blwXi7NpHLZZHIZSMycbRHi5K2f66w0Zumbp6TscxaJJaND&client_secret=FHeoL9Z6qxpMsKjnXdHnVuoltV3SmYpBGZ95hzJB",
+            body: "grant_type=client_credentials&client_id=" + apiKey + "&client_secret=" + apiSecret,
             headers: {
             "Content-Type": "application/x-www-form-urlencoded"
             },
